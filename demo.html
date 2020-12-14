@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jkTextTools.js</title>
+  <script src="./dist/jk_read_more.min.js"></script>
+</head>
+
+<body>
+
+  <div style="max-width: 600px;margin: 0 auto;">
+    <h2>jkTextTools.js</h2>
+    <p>
+      取出一个文本段内的重复词，里作为高频词、关键词。
+    </p>
+    <textarea id="textarea" style="width: 100%;max-width: 100%;min-width: 100%;height: 300px;"></textarea>
+    <br>
+    <button onclick="buttonRun()">Run</button>
+    <div id="res-box"></div>
+
+
+    <div id="my-text" style="display: none;">
+      Hunter Boot是一家英国胶靴生产商，推出了Hunter Original和Hunter Field两条产品线，主要销售橡胶靴，同时还销售旅行包、袜子、拖鞋和其他配件。
+    </div>
+    <!-- <div id="my-text" style="display: none;">
+      Hunter Boot是一家app pie。Hunter Boot.
+    </div> -->
+
+    <script>
+      document.getElementById('textarea').value = document.getElementById('my-text').innerText
+
+      function buttonRun() {
+        let text = document.getElementById('textarea').value
+        let res = jkTextTools.getWordsFromText(text)
+        
+        let arr_keys = res.map(item => item.word)
+        document.getElementById('res-box').innerHTML = arr_keys.join(', ')
+      }
+    </script>
+  </div>
+
+</body>
+
+</html>
